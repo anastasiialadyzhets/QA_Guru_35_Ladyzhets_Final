@@ -22,6 +22,8 @@ public class BaseTest {
         Configuration.baseUrl="https://www.chitai-gorod.ru";
         Configuration.browserSize="1920x1080";
 
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -33,7 +35,7 @@ public class BaseTest {
     }
     @BeforeEach
     void setupConfigurationForEach(){
-        SelenideLogger.addListener("allure", new AllureSelenide());
+        //SelenideLogger.addListener("allure", new AllureSelenide());
     }
     @AfterEach
     void addAttachments() {
