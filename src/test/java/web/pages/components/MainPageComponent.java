@@ -1,12 +1,9 @@
-package pages.components;
+package web.pages.components;
 
-import dev.failsafe.internal.util.Assert;
-import io.restassured.internal.common.assertion.Assertion;
 import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 

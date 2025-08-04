@@ -1,0 +1,200 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "title": "GetCart",
+  "required": true,
+
+  "properties": {
+
+    "addBonuses": {
+      "type": "number",
+      "required": true
+    },
+    "cost": {
+      "type": "number",
+      "required": true
+    },
+    "costGiftWrap": {
+      "type": [ "number", "null" ] ,
+      "required": true
+    },
+    "costWithBonuses": {
+      "type": "number",
+      "required": true
+    },
+    "costWithSale": {
+      "type": "number",
+      "required": true
+    },
+    "discount": {
+      "type": "number",
+      "required": true
+    },
+    "promoCode": {
+      "type":  [ "string", "null" ],
+      "required": true
+    },
+    "weight": {
+      "type": "number",
+      "required": true
+    },
+    "disabledProducts": {
+      "type": "array",
+      "required": true
+    },
+    "gifts": {
+      "type": "array",
+      "required": true
+    },
+    "preorderProducts": {
+      "type": "array",
+      "required": true
+    },
+    "products": {
+      "type": "array",
+      "required": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "authors": {
+            "type": "array",
+            "required": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string",
+                  "required": true
+                },
+                "id": {
+                  "type": "number",
+                  "required": true
+                },
+                "isForeignAgent": {
+                  "type": "boolean",
+                  "required": true
+                },
+                "lastName": {
+                  "type": "string",
+                  "required": true
+                },
+                "middleName": {
+                  "type": "string",
+                  "required": true
+                },
+                "url": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          },
+          "category":{
+            "type": "object",
+            "required": true
+          },
+          "categoryChain":{
+            "type": "array",
+            "required": true
+          },
+          "coauthors":{
+            "type": "array",
+            "required": true
+          },
+          "cost":{
+            "type": "number",
+            "required": true
+          },
+          "disabledBonuses":{
+            "type": "boolean",
+            "required": true
+          },
+          "fullCost":{
+            "type": "number",
+            "required": true
+          },
+          "fullPrice":{
+            "type": "number",
+            "required": true
+          },
+          "goodsId":{
+            "type": "number",
+            "required": true
+          },
+          "id":{
+            "type": "number",
+            "required": true
+          },
+          "inSubscription":{
+            "type": "boolean",
+            "required": true
+          },
+          "isBook":{
+            "type": "boolean",
+            "required": true
+          },
+          "isBookmarks":{
+            "type": "boolean",
+            "required": true
+          },
+          "isMagic":{
+            "type": "boolean",
+            "required": true
+          },
+          "nForM":{
+            "type": "object",
+            "required": true
+          },
+          "oldPrice":{
+            "type": "number",
+            "required": true
+          },
+          "picture":{
+            "type": "string",
+            "required": true
+          },
+          "preOrder":{
+            "type": "boolean",
+            "required": true
+          },
+          "price":{
+            "type": "number",
+            "required": true
+          },
+          "publisher":{
+            "type": "string",
+            "required": true
+          },
+          "quantity":{
+            "type": "number",
+            "required": true
+          },
+          "sale":{
+            "type": "boolean",
+            "required": true
+          },
+          "status":{
+            "type": "string",
+            "required": true
+          },
+          "stock":{
+            "type": "number",
+            "required": true
+          },
+          "title":{
+            "type": "string",
+            "required": true
+          },
+          "url":{
+            "type": "string",
+            "required": true
+          },
+          "weight":{
+            "type": "number",
+            "required": true
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,17 +1,20 @@
-package tests.E2E;
+package web.E2E;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.CartPage;
-import pages.MainPage;
-import pages.SalesPage;
-import pages.components.CartPageComponent;
-import pages.components.MainPageComponent;
-import tests.BaseTest;
+import web.pages.CartPage;
+import web.pages.MainPage;
+import web.pages.SalesPage;
+import web.pages.components.CartPageComponent;
+import web.pages.components.MainPageComponent;
+import web.BaseTest;
 
 import static io.qameta.allure.Allure.step;
 
 public class AddBookToCartAndCheckoutTest extends BaseTest {
+    @Tag("web_tests")
+    @Tag("web_e2e_tests")
     @Test
     @DisplayName("Положить книгу из распродажи в корзину и перейти к оплате без логина")
     void checkCatalogTest() {//переименовать

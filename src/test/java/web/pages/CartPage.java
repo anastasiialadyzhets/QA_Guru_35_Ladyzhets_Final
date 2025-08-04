@@ -1,6 +1,5 @@
-package pages;
+package web.pages;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 
 public class CartPage {

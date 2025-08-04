@@ -1,17 +1,17 @@
-package tests;
+package web;
 
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pages.MainPage;
-import pages.components.CartPageComponent;
-import pages.components.MainPageComponent;
+import web.BaseTest;
+import web.pages.MainPage;
+import web.pages.components.MainPageComponent;
 
 import static io.qameta.allure.Allure.step;
 
-public class MainPageTest extends BaseTest{
+public class MainPageTest extends BaseTest {
 
+    @Tag("web_tests")
     @ValueSource(strings = {
             "", "/promotions","/skorovprodage","/about"
     })
@@ -26,9 +26,8 @@ public class MainPageTest extends BaseTest{
         step("Проверить что страница "+page + "содержит стандартное меню", () -> {
             mainPageComponent.checkTopMenu();
         });
-
-
     }
+    @Tag("web_tests")
     @Test
     @DisplayName("Проверка наполения каталога")
     void checkCatalogTest() {
@@ -45,6 +44,7 @@ public class MainPageTest extends BaseTest{
             mainPageComponent.checkCatalog();
         });
     }
+    @Tag("web_tests")
     @Test
     @DisplayName("Проверка списка страниц в верхнем меню")
     void checkPagesTest() {
