@@ -27,7 +27,7 @@ public class AddBookToCartAndCheckoutTest extends BaseTest {
             mainPage.openPage("");
         });
         step("Перейти в раздел Распродажа", () -> {
-            mainPage.clickBottomMenuElement("Распродажа");//("Растем вместе")//(" Распродажа")
+            mainPage.clickBottomMenuElement("Распродажа");
         });
         step("Добавить книгу в корзину", () -> {
             salesPage.addItemToBasket();

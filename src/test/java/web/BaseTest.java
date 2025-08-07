@@ -5,7 +5,6 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,8 +24,6 @@ public class BaseTest {
         Configuration.browserVersion="137.0";
         Configuration.browserSize="1920x1080";
 
-        //SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
@@ -40,12 +37,9 @@ public class BaseTest {
     }
     @AfterEach
     void addAttachments() {
-        String sessionId = Selenide.sessionId().toString();
-        Attach.screenshotAs("Last screenshot");
+        Attach.screenshotAs("Screenshot");
         Attach.pageSource();
+        Attach.addVideo();
         closeWebDriver();
-
-        //Attach.addVideo(sessionId);
     }
-
 }

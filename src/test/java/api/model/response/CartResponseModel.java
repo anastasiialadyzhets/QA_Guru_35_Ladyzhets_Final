@@ -14,13 +14,13 @@ public class CartResponseModel {
     private Integer costGiftWrap;
     private Integer costWithBonuses;
     private Integer costWithSale;
-    private Product [] disabledProducts;////????????
+    private Product [] disabledProducts;
     private Integer discount;
-    private String [] gifts;//????????
-    private Product [] preorderProducts;//????????
+    private String [] gifts;
+    private Product [] preorderProducts;
     private Product[] products;
-    private String promoCode;//????????
-    private Integer weight;//////////
+    private String promoCode;
+    private Integer weight;
 
     @lombok.Data
     @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -29,18 +29,18 @@ public class CartResponseModel {
         private Autors [] authors;
         private Category category;
         private String [] categoryChain;
-        private Autors [] coauthors;//?????????
+        private Autors [] coauthors;
         private Integer cost;
         private Boolean disabledBonuses;
         private Integer fullCost;
         private Integer fullPrice;
-        private Integer goodsId;//?????????
-        private Integer id;//?????????
+        private Integer goodsId;
+        private Integer id;
         private Boolean inSubscription;
         private Boolean isBook;
         private Boolean isBookmarks;
         private Boolean isMagic;
-        private NForM nForM;//???????
+        private NForM nForM;
         private Integer oldPrice;
         private String picture;
         private Boolean preOrder;
@@ -83,6 +83,5 @@ public class CartResponseModel {
     public static class NForM {
         private Integer m;
         private Integer n;
-
     }
 }

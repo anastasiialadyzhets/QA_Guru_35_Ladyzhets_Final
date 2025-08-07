@@ -6,9 +6,8 @@ import static com.codeborne.selenide.Selenide.$;
 
 
 public class MainPage {
-    public MainPage openPage(String page){//openPage(String page){
+    public MainPage openPage(String page){
         open(page);
-       // executeJavaScript("$('tippy').remove()");
         sleep(3000);
         $("[class='chg-app-button__content']").click();
 
@@ -21,8 +20,9 @@ public class MainPage {
         return this;
     }
 
-    public MainPage openCatalog( ) {//openPage(String page){
+    public MainPage openCatalog( ) {
         $("[class='chg-app-button__content']").click();
+
         return this;
     }
 }

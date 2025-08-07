@@ -6,8 +6,6 @@ import io.restassured.RestAssured;
 import org.junit.jupiter.api.*;
 
 public class BaseTest {
-
-
     @BeforeAll
     static void setupConfiguration(){
         RestAssured.baseURI ="https://web-agr.chitai-gorod.ru";
@@ -16,5 +14,4 @@ public class BaseTest {
     public void setupAllureListener() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
-
 }

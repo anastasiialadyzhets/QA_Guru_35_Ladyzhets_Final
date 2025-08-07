@@ -41,9 +41,6 @@ public class ChangeItemQuantityTest extends BaseCartTest {
                     .spec(postProductResponse200Spec);
         });
 
-        List<ItemRequestModel> item_request = new ArrayList<ItemRequestModel>();
-
-
         CartResponseModel responseCart= step("Получить инфо о книгах из корзины", () ->
                 given(getCartRequestSpec(accessToken))
                         .when()
@@ -53,11 +50,12 @@ public class ChangeItemQuantityTest extends BaseCartTest {
                         .spec(getCartResponse200Spec)
                         .body(matchesJsonSchemaInClasspath(getCartSchema))
                         .extract().body().as(CartResponseModel.class));
+        List<ItemRequestModel> item_request = new ArrayList<>();
         int stock_count=responseCart.getProducts()[0].getStock();
         int setted_count=stock_count/2+1;
         item_request.add(new ItemRequestModel(responseCart.getProducts()[0].getId(),setted_count));
 
-        step("Изменить кол-во товаров", () -> {
+        step("Изменить количество товаров", () -> {
             given(putCartRequestSpec(accessToken))
                     .body(item_request.toArray())
                     .when()

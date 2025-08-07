@@ -14,20 +14,17 @@ public class MainPageComponent {
     private final String[] catalogLvl1Items= new String[]{"Книги","Канцтовары","Подарки и сувениры","Игры и игрушки"
             ,"Творчество и хобби","Товары для художников"};
 
-    //тут можно переопределить на разные локали ру и другие
     public MainPageComponent checkTopMenu() {
         $("[class='header__row']").shouldBe(visible);
         $("[class='header__logo-wrapper']").shouldBe(visible);
         $("[class='chg-app-button__content']").shouldHave(text("Каталог"));
         $("[class='app-search__form']").shouldBe(visible);
-        //й тут можно добаить на плейсхолдер "я иду ююю
 
         $("[class='header-controls header__controls']").shouldBe(visible);
         Assertions.assertEquals(topMenuContent.length, $$("[class='header-controls__text']").size());
         for (int i=0;i<topMenuContent.length;i++){
             $$("[class='header-controls__text']").get(i).shouldHave(text(topMenuContent[i]));
             $$("[class='header-controls__icon']").get(i).shouldBe(visible);
-
         }
 
         return this;
@@ -45,22 +42,9 @@ public class MainPageComponent {
     }
     public MainPageComponent checkCatalog() {
         $("[class='categories-menu']").shouldBe(visible);
-       // Assertions.assertEquals(catalogLvl1Items.length, $$("[class='categories-level-menu__item-title']").size());
         for (int i=0;i<catalogLvl1Items.length;i++){
             $$("[class='categories-level-menu__item-title']").get(i).shouldHave(text(catalogLvl1Items[i]));
         }
-
-        return this;
-    }
-
-    public MainPageComponent checkCheckoutAvailable() {
-        $("[class='button action-button blue']").shouldHave(text("Оформить"));
-
-        return this;
-    }
-
-    public MainPageComponent checkPageName(String expectedName) {
-        $("[class='cart-page__title']").shouldHave(text("Корзина"));
 
         return this;
     }
@@ -71,5 +55,4 @@ public class MainPageComponent {
 
         return this;
     }
-
 }

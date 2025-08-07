@@ -161,6 +161,4 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .body("products", hasSize(0));
         });
     }
-
-
 }
