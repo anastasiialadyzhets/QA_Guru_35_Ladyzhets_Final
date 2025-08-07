@@ -3,7 +3,6 @@ package web;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import web.BaseTest;
 import web.pages.MainPage;
 import web.pages.components.MainPageComponent;
 

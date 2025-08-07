@@ -5,15 +5,15 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class SalesPage extends MainPage{
     public SalesPage addItemToBasket(){
-        $("[class='product-card product-card product']").scrollIntoView(true);
+        $("[class='product-card app-products-list__item']").scrollIntoView(true);
         //$(byText("Купить")).scrollIntoView(true);
-        $("[class='product-buttons buttons product-card__controls']").click();
+        $("[class='chg-app-button chg-app-button--primary chg-app-button--s chg-app-button--brand-blue product-buttons__main-action product-buttons__main-action']").click();
 
         return this;
     }
     public SalesPage chekoutAfterAddItemToBasket(){//openPage(String page){
        sleep(2000);
-        $("[class='product-buttons buttons product-card__controls']").click();
+        $("[class='chg-app-button chg-app-button--primary chg-app-button--s chg-app-button--green product-buttons__main-action product-buttons__main-action']").click();
 
         return this;
     }

@@ -14,12 +14,15 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.webdriver;
 
 public class BaseTest {
     @BeforeAll
     static void setupConfiguration(){
         Configuration.pageLoadStrategy= "eager";
         Configuration.baseUrl="https://www.chitai-gorod.ru";
+        Configuration.browser="chrome";
+        Configuration.browserVersion="137.0";
         Configuration.browserSize="1920x1080";
 
         //SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
