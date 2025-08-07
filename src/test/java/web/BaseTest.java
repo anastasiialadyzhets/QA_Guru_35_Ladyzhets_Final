@@ -22,7 +22,7 @@ public class BaseTest {
         Configuration.baseUrl="https://www.chitai-gorod.ru";
         Configuration.browserSize="1920x1080";
 
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        //SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -33,7 +33,7 @@ public class BaseTest {
     }
     @BeforeEach
     void setupConfigurationForEach(){
-        //SelenideLogger.addListener("allure", new AllureSelenide());
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
     @AfterEach
     void addAttachments() {
