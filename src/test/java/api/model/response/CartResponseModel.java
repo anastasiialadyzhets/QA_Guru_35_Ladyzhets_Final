@@ -1,4 +1,5 @@
 package api.model.response;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -6,25 +7,27 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CartResponseModel {
     private Integer addBonuses;
     private Integer cost;
     private Integer costGiftWrap;
     private Integer costWithBonuses;
     private Integer costWithSale;
-    private  Products disabledProducts;////????????
+    private Product [] disabledProducts;////????????
     private Integer discount;
     private String [] gifts;//????????
-    private Products preorderProducts;//????????
-    private  Products [] products;
+    private Product [] preorderProducts;//????????
+    private Product[] products;
     private String promoCode;//????????
     private Integer weight;//////////
 
     @lombok.Data
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    public static class Products {
+    @JsonIgnoreProperties (ignoreUnknown = true)
+    public static class Product {
         private Autors [] authors;
-        private Category [] category;
+        private Category category;
         private String [] categoryChain;
         private Autors [] coauthors;//?????????
         private Integer cost;
@@ -54,6 +57,7 @@ public class CartResponseModel {
 
     @lombok.Data
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties (ignoreUnknown = true)
     public static class Autors {
         private String firstName;
         private Integer id;
@@ -65,6 +69,7 @@ public class CartResponseModel {
 
     @lombok.Data
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties (ignoreUnknown = true)
     public static class Category {
         private Integer id;
         private String slug;
@@ -74,13 +79,10 @@ public class CartResponseModel {
 
     @lombok.Data
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonIgnoreProperties (ignoreUnknown = true)
     public static class NForM {
         private Integer m;
         private Integer n;
 
     }
-
-
-
-
 }

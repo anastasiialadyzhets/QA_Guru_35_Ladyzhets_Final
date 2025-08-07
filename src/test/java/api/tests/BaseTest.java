@@ -7,9 +7,9 @@ import org.junit.jupiter.api.*;
 
 public class BaseTest {
 
+
     @BeforeAll
     static void setupConfiguration(){
-       // RestAssured.baseURI = "https://www.chitai-gorod.ru";
         RestAssured.baseURI ="https://web-agr.chitai-gorod.ru";
     }
     @BeforeEach

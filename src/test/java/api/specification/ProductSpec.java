@@ -29,4 +29,33 @@ public class ProductSpec {
             .log(BODY)
             .build();
 
+    public static ResponseSpecification postProductResponse500Spec = new ResponseSpecBuilder()
+            .expectStatusCode(500)
+            .log(STATUS)
+            .log(BODY)
+            .build();
+
+    public static RequestSpecification deleteProductRequestSpec (String accessToken) {
+        return with()
+                .filter(withCustomTemplates())
+                .header("authorization", accessToken)
+                .contentType(JSON)
+
+                .log().uri()
+                .log().body()
+                .log().headers()
+                .basePath("/web/api/v1/cart/product");
+    }
+    public static ResponseSpecification deleteProductResponse204Spec = new ResponseSpecBuilder()
+            .expectStatusCode(204)
+            .log(STATUS)
+            .log(BODY)
+            .build();
+
+    public static ResponseSpecification deleteProductResponse404Spec = new ResponseSpecBuilder()
+            .expectStatusCode(404)
+            .log(STATUS)
+            .log(BODY)
+            .build();
+
 }

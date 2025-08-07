@@ -22,11 +22,42 @@ public class CartSpec {
                 .log().headers()
                 .basePath("/web/api/v1/cart");
     }
-
     public static ResponseSpecification getCartResponse200Spec = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .log(STATUS)
             .log(BODY)
             .build();
 
+    public static RequestSpecification putCartRequestSpec (String accessToken) {
+        return with()
+                .header("authorization", accessToken)
+                .contentType(JSON)
+
+                .log().uri()
+                .log().body()
+                .log().headers()
+                .basePath("/web/api/v1/cart");
+    }
+
+    public static ResponseSpecification putCartResponse200Spec = new ResponseSpecBuilder()
+            .expectStatusCode(200)
+            .log(STATUS)
+            .log(BODY)
+            .build();
+    public static RequestSpecification deleteAllCartRequestSpec (String accessToken) {
+        return with()
+                .filter(withCustomTemplates())
+                .header("authorization", accessToken)
+                .contentType(JSON)
+
+                .log().uri()
+                .log().body()
+                .log().headers()
+                .basePath("/web/api/v1/cart");
+    }
+    public static ResponseSpecification deleteAllCartResponse204Spec = new ResponseSpecBuilder()
+            .expectStatusCode(204)
+            .log(STATUS)
+            .log(BODY)
+            .build();
 }

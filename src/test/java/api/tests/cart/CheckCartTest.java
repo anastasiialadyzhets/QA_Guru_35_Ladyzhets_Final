@@ -2,29 +2,23 @@ package api.tests.cart;
 
 import api.model.request.ProductRequestModel;
 import api.tests.Authorization;
-import api.tests.BaseTest;
-import io.qameta.allure.Step;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import java.util.Random;
 
 import static api.specification.CartSpec.*;
-import static api.specification.ProductSpec.postProductRequestSpec;
-import static api.specification.ProductSpec.postProductResponse200Spec;
+import static api.specification.ProductSpec.*;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
-public class GetCartTest extends BaseTest {
-    private final String getCartSchema = "getCartResponse-schema.json";
-
+public class CheckCartTest extends BaseCartTest {
     @Tag("api_tests")
     @Test
     @Description("Проверка пустой корзины")
     void emptyCartTest() {
-        //get token
-        //add token to variables
         String accessToken=Authorization.Auth();
 
         step("Проверить наполнение корзины", () -> {
@@ -34,7 +28,8 @@ public class GetCartTest extends BaseTest {
 
                     .then()
                     .spec(getCartResponse200Spec)
-                    .body(matchesJsonSchemaInClasspath(getCartSchema));
+                    .body(matchesJsonSchemaInClasspath(getCartSchema))
+                    .body("products", hasSize(0));
         });
     }
     @Tag("api_tests")
@@ -42,7 +37,10 @@ public class GetCartTest extends BaseTest {
     @Description("Проверка наполненой корзины")
     void notEmptyCartTest() {
         ProductRequestModel request = new ProductRequestModel();
-        request.setId(3072819);
+        Random random = new Random();
+        int productItem=random.nextInt(productList.length-1);
+        request.setId(productList[productItem]);
+
         String accessToken=Authorization.Auth();
 
         step("Добавить книгу в корзину", () -> {
@@ -62,7 +60,8 @@ public class GetCartTest extends BaseTest {
                     .then()
                     .spec(getCartResponse200Spec)
                     .body(matchesJsonSchemaInClasspath(getCartSchema))
-                    .body("products[0].goodsId", is(3072819));///////
+                    .body("products[0].goodsId", is(productList[productItem]))
+                    .body("products", hasSize(1));
         });
     }
 }
