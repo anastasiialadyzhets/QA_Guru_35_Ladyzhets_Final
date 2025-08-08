@@ -19,8 +19,6 @@ public class BaseConfig {
         Configuration.browser = webConfig.getBrowser().toString();
         Configuration.browserVersion = webConfig.getBrowserVersion();
         Configuration.browserSize = webConfig.getBrowserSize();
-        Configuration.remote ="https://user1:1234@selenoid.autotests.cloud/wd/hub";
-
 
         if (webConfig.isRemote()) {
             DesiredCapabilities capabilities = new DesiredCapabilities();
