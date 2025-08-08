@@ -13,7 +13,7 @@ import static io.restassured.http.ContentType.JSON;
 public class AuthSpec {
     public static RequestSpecification authRequestSpec = with()
             .filter(withCustomTemplates())
-            .contentType(JSON)
+            .contentType("application/json")
             .headers("Referer","https://www.chitai-gorod.ru/")
             .headers("Accept","*/*")
             .headers("Authority","web-agr.chitai-gorod.ru")
