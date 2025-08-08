@@ -14,6 +14,9 @@ public class AuthSpec {
     public static RequestSpecification authRequestSpec = with()
             .filter(withCustomTemplates())
             .contentType(JSON)
+            .headers("Referer","https://www.chitai-gorod.ru/")
+            .headers("Accept","*/*")
+            .headers("Authority","web-agr.chitai-gorod.ru")
 
             .log().uri()
             .log().body()

@@ -8,7 +8,7 @@
 Помимо книг в «Читай-город» можно найти канцтовары, сладости, подарочную упаковку и идеи для сюрпризов близким. Мы сами разрабатываем дизайны для многих ежедневников, закладок, товаров для творчества и других интересных вещей, поэтому кроме как в «Читай-город» их больше нигде не найти.
 </p>
 
-## :pushpin: Содержание:
+## Содержание:
 
 - [Технологии и инструменты]()
 - [Примеры автоматизированных тест-кейсов]()
@@ -66,25 +66,36 @@
     -  Проверка наполнения корзины
 
 ### *Локальный запуск:*
-аа
+gradle clean test\
+gradle clean web_test (для запуска UI тестов)\
+gradle clean api_test (для запуска API тестов)
 ### *Удалённый запуск через Jenkins:*
-аа
-### *Параметры сборки Jenkins:*
-аа
-## <img src="media/icon/Jenkins.svg" title="Jenkins" width="4%"/> <a href="LINK/">Сборка в Jenkins для UI тестов</a>
+```bash
+clean
+${TASK}
+--info
+-Dbrowser=${BROWSER}
+-DbrowserVersion=${BROWSER_VERSION}
+-DbrowserSize=${BROWSER_SIZE}
+-DselenoidUrl=${SELENOID_URL}
+-DselenoidUserLogin=${SELENOID_LOGIN}
+-DselenoidUserPassword=${SELENOID_PASSWORD}
+```
+
+## <img src="media/icon/Jenkins.svg" title="Jenkins" width="4%"/> <a href="https://jenkins.autotests.cloud/job/QA_Guru_35_Ladyzhets_Final_UI//">Сборка в Jenkins для UI тестов</a>
 <p align="center">
-<img title="Jenkins Build UI" src="media/СКРИНШОТ">
+<img title="Jenkins Build UI" src="media/jenkins_web.png">
 </p>
 
 ## <img src="media/icon/Allure_Report.svg" title="Allure Report" width="4%"/> <a href="LINK/">Пример Allure-отчета</a>
 ### *Общая информация*
 <p align="center">
-<img title="Allure Overview" src="media/СКРИНШОТ">
+<img title="Allure Overview" src="media/J_allure_over.png">
 </p>
 
 ### *Тест-кейсы*
 <p align="center">
-<img title="TestCases" src="media/СКРИНШОТ">
+<img title="TestCases" src="media/J_allure_detail.png">
 </p>
 
 ## <img src="media/icon/Jenkins.svg" title="Jenkins" width="4%"/> <a href="LINK/">Сборка в Jenkins для API тестов</a>
@@ -103,7 +114,12 @@
 <img title="TestCases" src="media/СКРИНШОТ">
 </p>
 
+## <img src="media/icon/AllureTestOps.svg" title="TestOps" width="4%"/> <a href="https://allure.autotests.cloud/project/4850/test-cases?treeId=9485/">Интеграция с ТестОпс</a>
+<p align="center">
+<img title="Jenkins Build API" src="media/allure_tops.png">
+</p>
+
 ## <img width="4%" style="vertical-align:middle" title="Telegram" src="media/icon/Telegram.svg"> Уведомления в Telegram с использованием бота
 <p align="center">
-<img width="70%" title="Telegram notification" src="media/СКРИНШОТ">
+<img width="70%" title="Telegram notification" src="media/tg_web.png">
 </p>
