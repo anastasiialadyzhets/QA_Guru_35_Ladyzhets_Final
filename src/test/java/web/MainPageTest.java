@@ -1,5 +1,9 @@
 package web;
 
+import io.qameta.allure.AllureId;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -10,7 +14,10 @@ import static io.qameta.allure.Allure.step;
 
 public class MainPageTest extends BaseTest {
 
-    @Tag("web_tests")
+    @Tag("web_test")
+    @Severity(SeverityLevel.CRITICAL)
+    @AllureId("39337")
+    @Owner("Ladyzhets")
     @ValueSource(strings = {
             "", "/promotions","/skorovprodage","/about"
     })
@@ -26,8 +33,11 @@ public class MainPageTest extends BaseTest {
             mainPageComponent.checkTopMenu();
         });
     }
-    @Tag("web_tests")
+    @Tag("web_test")
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @AllureId("39338")
+    @Owner("Ladyzhets")
     @DisplayName("Проверка наполения каталога")
     void checkCatalogTest() {
         MainPage mainPage= new MainPage();
@@ -43,8 +53,11 @@ public class MainPageTest extends BaseTest {
             mainPageComponent.checkCatalog();
         });
     }
-    @Tag("web_tests")
+    @Tag("web_test")
     @Test
+    @Severity(SeverityLevel.CRITICAL)
+    @AllureId("39336")
+    @Owner("Ladyzhets")
     @DisplayName("Проверка списка страниц в верхнем меню")
     void checkPagesTest() {
         MainPage mainPage= new MainPage();

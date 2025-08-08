@@ -3,7 +3,13 @@ package api.tests.cart;
 import api.model.request.ProductRequestModel;
 import api.model.response.CartResponseModel;
 import api.tests.Authorization;
+import io.qameta.allure.AllureId;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -18,9 +24,12 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
 public class DeleteFromCartTest extends BaseCartTest {
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка удаления из корзины")
+    @Severity(SeverityLevel.CRITICAL)
+    @AllureId("39332")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка удаления из корзины")
     void deleteFromCartTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
@@ -69,9 +78,12 @@ public class DeleteFromCartTest extends BaseCartTest {
         });
     }
 
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка очистки корзины")
+    @Severity(SeverityLevel.NORMAL)
+    @AllureId("39333")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка очистки корзины")
     void deleteAllFromCartTest() {
        String accessToken=Authorization.Auth();
 
@@ -96,9 +108,12 @@ public class DeleteFromCartTest extends BaseCartTest {
         });
     }
 
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка удаления из корзины товара которого нет в корзине")
+    @Severity(SeverityLevel.NORMAL)
+    @AllureId("39334")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка удаления из корзины товара которого нет в корзине")
     void deleteFromCartNotAddedItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
@@ -129,9 +144,12 @@ public class DeleteFromCartTest extends BaseCartTest {
         });
     }
 
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка удаления из корзины товара которого не существует")
+    @Severity(SeverityLevel.NORMAL)
+    @AllureId("39335")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка удаления из корзины товара которого не существует")
     void deleteFromCartNotExistItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();

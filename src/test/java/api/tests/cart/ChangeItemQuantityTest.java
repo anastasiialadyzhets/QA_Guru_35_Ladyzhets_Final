@@ -4,7 +4,12 @@ import api.model.request.ItemRequestModel;
 import api.model.request.ProductRequestModel;
 import api.model.response.CartResponseModel;
 import api.tests.Authorization;
+import io.qameta.allure.AllureId;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -20,9 +25,12 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.is;
 
 public class ChangeItemQuantityTest extends BaseCartTest {
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка изменения количесства товаров в корзине")
+    @Severity(SeverityLevel.CRITICAL)
+    @AllureId("39327")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка изменения количества товаров в корзине")
     void changeCountOfItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();

@@ -2,7 +2,12 @@ package api.tests.cart;
 
 import api.model.request.ProductRequestModel;
 import api.tests.Authorization;
+import io.qameta.allure.AllureId;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +22,12 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 
 public class AddToCartTest extends BaseCartTest {
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка добавления книги в корзину")
+    @Severity(SeverityLevel.CRITICAL)
+    @AllureId("39329")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка добавления книги в корзину")
     void AddToCartExistItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
@@ -50,9 +58,12 @@ public class AddToCartTest extends BaseCartTest {
         });
     }
 
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка добавления несуществующей книги в корзину")
+    @Severity(SeverityLevel.NORMAL)
+    @AllureId("39328")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка добавления несуществующей книги в корзину")
     void AddToCartNonExistItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();

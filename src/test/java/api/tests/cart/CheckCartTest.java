@@ -2,7 +2,12 @@ package api.tests.cart;
 
 import api.model.request.ProductRequestModel;
 import api.tests.Authorization;
+import io.qameta.allure.AllureId;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import java.util.Random;
@@ -15,9 +20,12 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static org.hamcrest.Matchers.*;
 
 public class CheckCartTest extends BaseCartTest {
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка пустой корзины")
+    @Severity(SeverityLevel.NORMAL)
+    @AllureId("39331")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка пустой корзины")
     void emptyCartTest() {
         String accessToken=Authorization.Auth();
 
@@ -32,9 +40,12 @@ public class CheckCartTest extends BaseCartTest {
                     .body("products", hasSize(0));
         });
     }
-    @Tag("api_tests")
+    @Tag("api_test")
     @Test
-    @Description("Проверка наполненой корзины")
+    @Severity(SeverityLevel.CRITICAL)
+    @AllureId("39330")
+    @Owner("Ladyzhets")
+    @DisplayName("Проверка наполненой корзины")
     void notEmptyCartTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
