@@ -8,28 +8,15 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.Map;
-
+import web.config.*;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.webdriver;
 
 public class BaseTest {
+    public static final WebConfig webConfig = WebProvider.getWebConfig();
     @BeforeAll
     static void setupConfiguration(){
-        Configuration.pageLoadStrategy= "eager";
-        Configuration.baseUrl="https://www.chitai-gorod.ru";
-        Configuration.browser="chrome";
-        Configuration.browserVersion="137.0";
-        Configuration.browserSize="1920x1080";
-
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
+        BaseConfig baseConfig = new BaseConfig(webConfig);
+        baseConfig.setConfig();
     }
     @BeforeEach
     void setupConfigurationForEach(){
@@ -39,7 +26,9 @@ public class BaseTest {
     void addAttachments() {
         Attach.screenshotAs("Screenshot");
         Attach.pageSource();
-        Attach.addVideo();
+        if (webConfig.isRemote()) {
+            Attach.addVideo();
+        }
         closeWebDriver();
     }
 }
