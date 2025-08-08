@@ -1,14 +1,15 @@
 package web.pages;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 
 public class MainPage {
-    public MainPage openPage(String page){
+    public MainPage openPage(String page) throws InterruptedException {
         open(page);
-        sleep(3000);
+        $("[class='chg-app-button__content']").shouldBe(visible);
         $("[class='chg-app-button__content']").click();
 
         return this;
@@ -21,6 +22,7 @@ public class MainPage {
     }
 
     public MainPage openCatalog( ) {
+        $("[class='chg-app-button__content']").shouldBe(visible);
         $("[class='chg-app-button__content']").click();
 
         return this;

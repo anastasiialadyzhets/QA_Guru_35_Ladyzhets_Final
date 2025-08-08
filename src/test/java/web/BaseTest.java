@@ -26,9 +26,7 @@ public class BaseTest {
     void addAttachments() {
         Attach.screenshotAs("Screenshot");
         Attach.pageSource();
-        if (webConfig.isRemote()) {
-            Attach.addVideo();
-        }
+        Attach.addVideo();
         closeWebDriver();
     }
 }
