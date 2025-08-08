@@ -6,9 +6,7 @@ import io.restassured.specification.ResponseSpecification;
 
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
-import static io.restassured.filter.log.LogDetail.BODY;
-import static io.restassured.filter.log.LogDetail.STATUS;
-import static io.restassured.http.ContentType.JSON;
+import static io.restassured.filter.log.LogDetail.*;
 
 public class AuthSpec {
     public static RequestSpecification authRequestSpec = with()
@@ -16,6 +14,7 @@ public class AuthSpec {
             .contentType("application/json")
             .headers("Referer","https://www.chitai-gorod.ru/")
             .headers("Accept","*/*")
+            .headers("User-Agent","PostmanRuntime/7.37.3")
             .headers("Authority","web-agr.chitai-gorod.ru")
 
             .log().uri()
@@ -26,5 +25,6 @@ public class AuthSpec {
             .expectStatusCode(201)
             .log(STATUS)
             .log(BODY)
+            .log(HEADERS)
             .build();
 }
