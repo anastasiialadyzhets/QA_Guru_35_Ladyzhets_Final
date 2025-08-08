@@ -1,5 +1,6 @@
 package web;
 
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -15,6 +16,7 @@ public class PromotionsPageTest extends BaseTest {
     @Tag("web_test")
     @Test
     @Severity(SeverityLevel.NORMAL)
+    @AllureId("39348")
     @Owner("Ladyzhets")
     @DisplayName("Проверка, что отображаются акции и скидки")
     void CheckAvailablePromotionsTest() {
@@ -35,6 +37,7 @@ public class PromotionsPageTest extends BaseTest {
     @Tag("web_test")
     @Test
     @Severity(SeverityLevel.NORMAL)
+    @AllureId("39346")
     @Owner("Ladyzhets")
     @DisplayName("Проверка, что доступны быстрые фильтры по акциям и скидкам")
     void CheckPromotionsQuickFilterTest() {
@@ -52,6 +55,7 @@ public class PromotionsPageTest extends BaseTest {
     @Tag("web_test")
     @Test
     @Severity(SeverityLevel.NORMAL)
+    @AllureId("39347")
     @Owner("Ladyzhets")
     @DisplayName("Проверка перехода в карточку акции")
     void CheckPromotionsDetailedTest() {

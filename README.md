@@ -58,6 +58,7 @@
     -  Проверка отображения верхнего меню
     -  Проверка отображения дерева каталога
     -  Проверка отображения доступных страниц
+    -  Проверка отображения списка акций и скидок
 -  API
     -  Получение сессионного токена авторизации для работы с сервисом
     -  Добавление товара в корзину
@@ -98,21 +99,7 @@ ${TASK}
 <img title="TestCases" src="media/J_allure_detail.png">
 </p>
 
-## <img src="media/icon/Jenkins.svg" title="Jenkins" width="4%"/> <a href="LINK/">Сборка в Jenkins для API тестов</a>
-<p align="center">
-<img title="Jenkins Build API" src="media/СКРИНШОТ">
-</p>
-
-## <img src="media/icon/Allure_Report.svg" title="Allure Report" width="4%"/> <a href="LINK/">Пример Allure-отчета</a>
-### *Общая информация*
-<p align="center">
-<img title="Allure Overview" src="media/СКРИНШОТ">
-</p>
-
-### *Тест-кейсы*
-<p align="center">
-<img title="TestCases" src="media/СКРИНШОТ">
-</p>
+### <img src="media/icon/Jenkins.svg" title="Jenkins" width="4%"/> <a href="https://jenkins.autotests.cloud/job/QA_Guru_35_Ladyzhets_Final_API//">Сборка в Jenkins для API тестов</a>
 
 ## <img src="media/icon/AllureTestOps.svg" title="TestOps" width="4%"/> <a href="https://allure.autotests.cloud/project/4850/test-cases?treeId=9485/">Интеграция с ТестОпс</a>
 <p align="center">
