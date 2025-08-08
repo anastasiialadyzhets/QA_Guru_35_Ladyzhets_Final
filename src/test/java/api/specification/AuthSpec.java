@@ -15,8 +15,8 @@ public class AuthSpec {
             .contentType("application/json")
             .headers("Referer","https://www.chitai-gorod.ru/")
             .headers("Accept","*/*")
-            //.headers("User-Agent","PostmanRuntime/7.37.3")
-            //.headers("Authority","web-agr.chitai-gorod.ru")
+            .headers("User-Agent","Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36")
+            .headers("Authority","web-agr.chitai-gorod.ru")
             .headers("Host","web-agr.chitai-gorod.ru")
 
 
