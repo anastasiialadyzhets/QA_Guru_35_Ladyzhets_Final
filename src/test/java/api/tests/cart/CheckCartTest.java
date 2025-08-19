@@ -6,10 +6,10 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
 import java.util.Random;
 
 import static api.specification.CartSpec.*;
@@ -27,7 +27,7 @@ public class CheckCartTest extends BaseCartTest {
     @Owner("Ladyzhets")
     @DisplayName("Проверка пустой корзины")
     void emptyCartTest() {
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
 
         step("Проверить наполнение корзины", () -> {
             given(getCartRequestSpec(accessToken))
@@ -40,6 +40,7 @@ public class CheckCartTest extends BaseCartTest {
                     .body("products", hasSize(0));
         });
     }
+
     @Tag("api_test")
     @Test
     @Severity(SeverityLevel.CRITICAL)
@@ -49,10 +50,10 @@ public class CheckCartTest extends BaseCartTest {
     void notEmptyCartTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
-        int productItem=random.nextInt(productList.length-1);
+        int productItem = random.nextInt(productList.length - 1);
         request.setId(productList[productItem]);
 
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
 
         step("Добавить книгу в корзину", () -> {
             given(postProductRequestSpec(accessToken))

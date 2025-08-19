@@ -1,5 +1,8 @@
 package web.pages;
 
+import com.codeborne.selenide.SelenideElement;
+import web.pages.components.MainPageComponent;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -7,10 +10,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 
 public class MainPage {
+    public MainPageComponent mainPageComponent = new MainPageComponent();
+    private final SelenideElement chgAppBtn = $("[class='chg-app-button__content']");
+
     public MainPage openPage(String page) throws InterruptedException {
         open(page);
-        $("[class='chg-app-button__content']").shouldBe(visible);
-        $("[class='chg-app-button__content']").click();
+        chgAppBtn.shouldBe(visible);
+        chgAppBtn.click();
 
         return this;
     }
@@ -22,8 +28,8 @@ public class MainPage {
     }
 
     public MainPage openCatalog( ) {
-        $("[class='chg-app-button__content']").shouldBe(visible);
-        $("[class='chg-app-button__content']").click();
+        chgAppBtn.shouldBe(visible);
+        chgAppBtn.click();
 
         return this;
     }

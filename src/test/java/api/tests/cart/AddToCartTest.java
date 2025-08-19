@@ -6,7 +6,6 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -31,10 +30,10 @@ public class AddToCartTest extends BaseCartTest {
     void AddToCartExistItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
-        int productItem=random.nextInt(productList.length-1);
+        int productItem = random.nextInt(productList.length - 1);
         request.setId(productList[productItem]);
 
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
 
         step("Добавить книгу в корзину", () -> {
             given(postProductRequestSpec(accessToken))
@@ -67,10 +66,10 @@ public class AddToCartTest extends BaseCartTest {
     void AddToCartNonExistItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
-        int productItem=random.nextInt(productNoEsistList.length-1);
+        int productItem = random.nextInt(productNoEsistList.length - 1);
         request.setId(productNoEsistList[productItem]);
 
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
         step("Добавить книгу в корзину", () -> {
             given(postProductRequestSpec(accessToken))
                     .body(request)
@@ -79,7 +78,7 @@ public class AddToCartTest extends BaseCartTest {
 
                     .then()
                     .spec(postProductResponse500Spec)
-                    .body("message",is(messageProductNotExist));
+                    .body("message", is(messageProductNotExist));
         });
 
         step("Проверить наполнение корзины", () -> {

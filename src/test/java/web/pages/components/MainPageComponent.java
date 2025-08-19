@@ -1,5 +1,7 @@
 package web.pages.components;
 
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.Assertions;
 
 import static com.codeborne.selenide.Condition.text;
@@ -8,50 +10,65 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class MainPageComponent {
-    private final String[] bottomMenuContent= new String[]{"Акции","Распродажа","Читай-школа","Растем вместе"
-            ,"Что ещё почитать?","Читай-журнал","Подарочные сертификаты"};
-    private final String[] topMenuContent= new String[]{"Войти","Заказы","Закладки","Корзина"};
-    private final String[] catalogLvl1Items= new String[]{"Книги","Канцтовары","Подарки и сувениры","Игры и игрушки"
-            ,"Творчество и хобби","Товары для художников"};
+    private final SelenideElement headerRow = $("[class='header__row']"),
+            headerLogo = $("[class='header__logo-wrapper']"),
+            catalogElem = $("[class='chg-app-button__content']"),
+            searchInputElem = $("[class='app-search__form']"),
+            headerControls = $("[class='header-controls header__controls']"),
+            headerBottom = $("[class='header-bottom__container']"),
+            signMenuElem = $("[class='ui-modal__slot-wrapper']"),
+            catalogMenu = $("[class='categories-menu']");
+    private final ElementsCollection headerControlsText = $$("[class='header-controls__text']"),
+            headerControlsIcon = $$("[class='header-controls__icon']"),
+            headerBottomLink = $$("[class='header-bottom__link-item']"),
+            catalogMenuCategories = $$("[class='categories-level-menu__item-title']");
+
+
+    private final String[] bottomMenuContent = new String[]{"Акции", "Распродажа", "Читай-школа", "Растем вместе"
+            , "Что ещё почитать?", "Читай-журнал", "Подарочные сертификаты"};
+    private final String[] topMenuContent = new String[]{"Войти", "Заказы", "Закладки", "Корзина"};
+    private final String[] catalogLvl1Items = new String[]{"Книги", "Канцтовары", "Подарки и сувениры", "Игры и игрушки"
+            , "Творчество и хобби", "Товары для художников"};
 
     public MainPageComponent checkTopMenu() {
-        $("[class='header__row']").shouldBe(visible);
-        $("[class='header__logo-wrapper']").shouldBe(visible);
-        $("[class='chg-app-button__content']").shouldHave(text("Каталог"));
-        $("[class='app-search__form']").shouldBe(visible);
+        headerRow.shouldBe(visible);
+        headerLogo.shouldBe(visible);
+        catalogElem.shouldHave(text("Каталог"));
+        searchInputElem.shouldBe(visible);
 
-        $("[class='header-controls header__controls']").shouldBe(visible);
-        Assertions.assertEquals(topMenuContent.length, $$("[class='header-controls__text']").size());
-        for (int i=0;i<topMenuContent.length;i++){
-            $$("[class='header-controls__text']").get(i).shouldHave(text(topMenuContent[i]));
-            $$("[class='header-controls__icon']").get(i).shouldBe(visible);
+        headerControls.shouldBe(visible);
+        Assertions.assertEquals(topMenuContent.length, headerControlsText.size());
+        for (int i = 0; i < topMenuContent.length; i++) {
+            headerControlsText.get(i).shouldHave(text(topMenuContent[i]));
+            headerControlsIcon.get(i).shouldBe(visible);
         }
 
         return this;
     }
 
     public MainPageComponent checkBottomLinkMenu() {
-        $("[class='header-bottom__container']").shouldBe(visible);
+        headerBottom.shouldBe(visible);
 
-        Assertions.assertEquals(bottomMenuContent.length, $$("[class='header-bottom__link-item']").size());
-        for (int i=0;i<bottomMenuContent.length;i++){
-            $$("[class='header-bottom__link-item']").get(i).shouldHave(text(bottomMenuContent[i]));
+        Assertions.assertEquals(bottomMenuContent.length, headerBottomLink.size());
+        for (int i = 0; i < bottomMenuContent.length; i++) {
+            headerBottomLink.get(i).shouldHave(text(bottomMenuContent[i]));
         }
 
         return this;
     }
+
     public MainPageComponent checkCatalog() {
-        $("[class='categories-menu']").shouldBe(visible);
-        for (int i=0;i<catalogLvl1Items.length;i++){
-            $$("[class='categories-level-menu__item-title']").get(i).shouldHave(text(catalogLvl1Items[i]));
+        catalogMenu.shouldBe(visible);
+        for (int i = 0; i < catalogLvl1Items.length; i++) {
+            catalogMenuCategories.get(i).shouldHave(text(catalogLvl1Items[i]));
         }
 
         return this;
     }
 
     public MainPageComponent checkSignInSignUpPopUpOccured() {
-        $("[class='ui-modal__slot-wrapper']").shouldBe(visible);
-        $("[class='ui-modal__slot-wrapper']").shouldHave(text("Вход и регистрация"));
+        signMenuElem.shouldBe(visible);
+        signMenuElem.shouldHave(text("Вход и регистрация"));
 
         return this;
     }

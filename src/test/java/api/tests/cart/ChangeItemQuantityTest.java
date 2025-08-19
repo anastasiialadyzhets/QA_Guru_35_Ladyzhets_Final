@@ -8,7 +8,6 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -34,10 +33,10 @@ public class ChangeItemQuantityTest extends BaseCartTest {
     void changeCountOfItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
-        int productItem=random.nextInt(productList.length-1);
+        int productItem = random.nextInt(productList.length - 1);
         request.setId(productList[productItem]);
 
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
 
         step("Добавить книгу в корзину", () -> {
             given(postProductRequestSpec(accessToken))
@@ -49,7 +48,7 @@ public class ChangeItemQuantityTest extends BaseCartTest {
                     .spec(postProductResponse200Spec);
         });
 
-        CartResponseModel responseCart= step("Получить инфо о книгах из корзины", () ->
+        CartResponseModel responseCart = step("Получить инфо о книгах из корзины", () ->
                 given(getCartRequestSpec(accessToken))
                         .when()
                         .get()
@@ -59,9 +58,9 @@ public class ChangeItemQuantityTest extends BaseCartTest {
                         .body(matchesJsonSchemaInClasspath(getCartSchema))
                         .extract().body().as(CartResponseModel.class));
         List<ItemRequestModel> item_request = new ArrayList<>();
-        int stock_count=responseCart.getProducts()[0].getStock();
-        int setted_count=stock_count/2+1;
-        item_request.add(new ItemRequestModel(responseCart.getProducts()[0].getId(),setted_count));
+        int stock_count = responseCart.getProducts()[0].getStock();
+        int setted_count = stock_count / 2 + 1;
+        item_request.add(new ItemRequestModel(responseCart.getProducts()[0].getId(), setted_count));
 
         step("Изменить количество товаров", () -> {
             given(putCartRequestSpec(accessToken))

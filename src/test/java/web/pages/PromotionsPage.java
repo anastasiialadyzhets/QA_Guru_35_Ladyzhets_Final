@@ -1,10 +1,16 @@
 package web.pages;
 
+import com.codeborne.selenide.SelenideElement;
+import web.pages.components.PromotionsPageComponent;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class PromotionsPage extends MainPage{
+    public PromotionsPageComponent promotionsPageComponent = new PromotionsPageComponent();
+    private final SelenideElement fPromotionCard = $("[class='block-promotion-card']");
+
     public PromotionsPage openFirstPromotionCard(){
-        $("[class='block-promotion-card']").click();
+        fPromotionCard.click();
 
         return this;
     }

@@ -1,20 +1,24 @@
 package web.pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class SalesPage extends MainPage{
+    private final SelenideElement addToCartBtn = $("[class='chg-app-button chg-app-button--primary chg-app-button--s chg-app-button--brand-blue product-buttons__main-action product-buttons__main-action']"),
+            productCardItem = $("[class='product-card app-products-list__item']"),
+            chekoutBtn = $("[class='chg-app-button chg-app-button--primary chg-app-button--s chg-app-button--green product-buttons__main-action product-buttons__main-action']");
+
     public SalesPage addItemToBasket(){
-        $("[class='product-card app-products-list__item']").scrollIntoView(true);
-        $("[class='chg-app-button chg-app-button--primary chg-app-button--s chg-app-button--brand-blue product-buttons__main-action product-buttons__main-action']").click();
+        productCardItem.scrollIntoView(true);
+        addToCartBtn.click();
 
         return this;
     }
     public SalesPage chekoutAfterAddItemToBasket(){
-        $("[class='chg-app-button chg-app-button--primary chg-app-button--s chg-app-button--green product-buttons__main-action product-buttons__main-action']").shouldBe(Condition.visible);
-        $("[class='chg-app-button chg-app-button--primary chg-app-button--s chg-app-button--green product-buttons__main-action product-buttons__main-action']").click();
+        chekoutBtn.shouldBe(Condition.visible);
+        chekoutBtn.click();
 
         return this;
     }

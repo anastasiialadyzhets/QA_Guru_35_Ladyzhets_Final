@@ -7,9 +7,7 @@ import io.qameta.allure.AllureId;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import jdk.jfr.Description;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
@@ -33,10 +31,10 @@ public class DeleteFromCartTest extends BaseCartTest {
     void deleteFromCartTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
-        int productItem=random.nextInt(productList.length-1);
+        int productItem = random.nextInt(productList.length - 1);
         request.setId(productList[productItem]);
 
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
         step("Добавить книгу в корзину", () -> {
             given(postProductRequestSpec(accessToken))
                     .body(request)
@@ -47,7 +45,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .spec(postProductResponse200Spec);
         });
 
-        CartResponseModel responseCart= step("Получить инфо о книгах из корзины", () ->
+        CartResponseModel responseCart = step("Получить инфо о книгах из корзины", () ->
                 given(getCartRequestSpec(accessToken))
                         .when()
                         .get()
@@ -60,7 +58,7 @@ public class DeleteFromCartTest extends BaseCartTest {
         step("Удалить книгу из корзины", () -> {
             given(deleteProductRequestSpec(accessToken))
                     .when()
-                    .delete("/"+responseCart.getProducts()[0].getId())
+                    .delete("/" + responseCart.getProducts()[0].getId())
 
                     .then()
                     .spec(deleteProductResponse204Spec);
@@ -85,7 +83,7 @@ public class DeleteFromCartTest extends BaseCartTest {
     @Owner("Ladyzhets")
     @DisplayName("Проверка очистки корзины")
     void deleteAllFromCartTest() {
-       String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
 
         step("Очистить корзину", () -> {
             given(deleteAllCartRequestSpec(accessToken))
@@ -117,19 +115,19 @@ public class DeleteFromCartTest extends BaseCartTest {
     void deleteFromCartNotAddedItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
-        int productItem=random.nextInt(productList.length-1);
+        int productItem = random.nextInt(productList.length - 1);
         request.setId(productList[productItem]);
 
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
 
         step("Удалить книгу из корзины", () -> {
             given(deleteProductRequestSpec(accessToken))
                     .when()
-                    .delete("/"+request.getId())
+                    .delete("/" + request.getId())
 
                     .then()
                     .spec(deleteProductResponse404Spec)
-                    .body("message",is(messageProductDFindInCart));
+                    .body("message", is(messageProductDFindInCart));
         });
 
         step("Проверить наполнение корзины", () -> {
@@ -153,19 +151,19 @@ public class DeleteFromCartTest extends BaseCartTest {
     void deleteFromCartNotExistItemTest() {
         ProductRequestModel request = new ProductRequestModel();
         Random random = new Random();
-        int productItem=random.nextInt(productList.length-1);
+        int productItem = random.nextInt(productList.length - 1);
         request.setId(productList[productItem]);
 
-        String accessToken=Authorization.Auth();
+        String accessToken = Authorization.Auth();
 
         step("Удалить книгу из корзины", () -> {
             given(deleteProductRequestSpec(accessToken))
                     .when()
-                    .delete("/"+request.getId())
+                    .delete("/" + request.getId())
 
                     .then()
                     .spec(deleteProductResponse404Spec)
-                    .body("message",is(messageProductDFindInCart));
+                    .body("message", is(messageProductDFindInCart));
         });
 
         step("Проверить наполнение корзины", () -> {

@@ -1,6 +1,6 @@
 # Проект по автоматизации тестирования сайта "[Читай-город](https://www.chitai-gorod.ru/)"
 <p align="center">
-<img title="chitai-gorod" src="//upload.wikimedia.org/wikipedia/commons/thumb/d/d4/%D0%9B%D0%BE%D0%B3%D0%BE-2_%D1%81%D0%B8%D0%BD%D0%B8%D0%B93.jpg/250px-%D0%9B%D0%BE%D0%B3%D0%BE-2_%D1%81%D0%B8%D0%BD%D0%B8%D0%B93.jpg">
+<img title="chitai-gorod" src="media/icon/ChitajGorodLogo.png">
 </p>
 
 <p align="left">
@@ -88,7 +88,7 @@ ${TASK}
 <img title="Jenkins Build UI" src="media/jenkins_web.png">
 </p>
 
-## <img src="media/icon/Allure_Report.svg" title="Allure Report" width="4%"/> <a href="LINK/">Пример Allure-отчета</a>
+## <img src="media/icon/Allure_Report.svg" title="Allure Report" width="4%"/> <a href="https://jenkins.autotests.cloud/job/QA_Guru_35_Ladyzhets_Final_UI/23/allure/">Пример Allure-отчета</a>
 ### *Общая информация*
 <p align="center">
 <img title="Allure Overview" src="media/J_allure_over.png">
