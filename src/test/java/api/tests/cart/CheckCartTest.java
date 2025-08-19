@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+import static api.specification.BaseSpec.build;
 import static api.specification.CartSpec.*;
 import static api.specification.ProductSpec.*;
 import static io.qameta.allure.Allure.step;
@@ -35,7 +36,7 @@ public class CheckCartTest extends BaseCartTest {
                     .get()
 
                     .then()
-                    .spec(getCartResponse200Spec)
+                    .spec(build(200))
                     .body(matchesJsonSchemaInClasspath(getCartSchema))
                     .body("products", hasSize(0));
         });
@@ -62,7 +63,7 @@ public class CheckCartTest extends BaseCartTest {
                     .post()
 
                     .then()
-                    .spec(postProductResponse200Spec);
+                    .spec(build(200));
         });
         step("Проверить наполнение корзины", () -> {
             given(getCartRequestSpec(accessToken))
@@ -70,7 +71,7 @@ public class CheckCartTest extends BaseCartTest {
                     .get()
 
                     .then()
-                    .spec(getCartResponse200Spec)
+                    .spec(build(200))
                     .body(matchesJsonSchemaInClasspath(getCartSchema))
                     .body("products[0].goodsId", is(productList[productItem]))
                     .body("products", hasSize(1));

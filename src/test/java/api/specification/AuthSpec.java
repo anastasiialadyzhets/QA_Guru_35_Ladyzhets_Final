@@ -1,12 +1,11 @@
 package api.specification;
 
 import io.restassured.specification.RequestSpecification;
-import io.restassured.specification.ResponseSpecification;
 
 import static helpers.CustomAllureListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
 
-public class AuthSpec extends BaseSpec {
+public class AuthSpec{
     public static RequestSpecification authRequestSpec = with()
             .filter(withCustomTemplates())
             .contentType("application/json")
@@ -21,5 +20,4 @@ public class AuthSpec extends BaseSpec {
             .log().body()
             .log().headers()
             .basePath("web/api/v1/auth/anonymous");
-    public static ResponseSpecification authResponse201Spec = build(201);
 }

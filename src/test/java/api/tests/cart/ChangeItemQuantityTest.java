@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static api.specification.BaseSpec.build;
 import static api.specification.CartSpec.*;
 import static api.specification.ProductSpec.*;
 import static io.qameta.allure.Allure.step;
@@ -45,7 +46,7 @@ public class ChangeItemQuantityTest extends BaseCartTest {
                     .post()
 
                     .then()
-                    .spec(postProductResponse200Spec);
+                    .spec(build(200));
         });
 
         CartResponseModel responseCart = step("Получить инфо о книгах из корзины", () ->
@@ -54,7 +55,7 @@ public class ChangeItemQuantityTest extends BaseCartTest {
                         .get()
 
                         .then()
-                        .spec(getCartResponse200Spec)
+                        .spec(build(200))
                         .body(matchesJsonSchemaInClasspath(getCartSchema))
                         .extract().body().as(CartResponseModel.class));
         List<ItemRequestModel> item_request = new ArrayList<>();
@@ -69,7 +70,7 @@ public class ChangeItemQuantityTest extends BaseCartTest {
                     .put()
 
                     .then()
-                    .spec(putCartResponse200Spec)
+                    .spec(build(200))
                     .body("products[0].quantity", is(setted_count));
         });
     }

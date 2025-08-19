@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+import static api.specification.BaseSpec.build;
 import static api.specification.CartSpec.*;
 import static api.specification.ProductSpec.*;
 import static io.qameta.allure.Allure.step;
@@ -42,7 +43,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .post()
 
                     .then()
-                    .spec(postProductResponse200Spec);
+                    .spec(build(200));
         });
 
         CartResponseModel responseCart = step("Получить инфо о книгах из корзины", () ->
@@ -51,7 +52,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                         .get()
 
                         .then()
-                        .spec(getCartResponse200Spec)
+                        .spec(build(200))
                         .body(matchesJsonSchemaInClasspath(getCartSchema))
                         .extract().body().as(CartResponseModel.class));
 
@@ -61,7 +62,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .delete("/" + responseCart.getProducts()[0].getId())
 
                     .then()
-                    .spec(deleteProductResponse204Spec);
+                    .spec(build(204));
         });
 
         step("Проверить наполнение корзины", () -> {
@@ -70,7 +71,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .get()
 
                     .then()
-                    .spec(getCartResponse200Spec)
+                    .spec(build(200))
                     .body(matchesJsonSchemaInClasspath(getCartSchema))
                     .body("products", hasSize(0));
         });
@@ -91,7 +92,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .delete()
 
                     .then()
-                    .spec(deleteAllCartResponse204Spec);
+                    .spec(build(204));
         });
 
         step("Проверить наполнение корзины", () -> {
@@ -100,7 +101,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .get()
 
                     .then()
-                    .spec(getCartResponse200Spec)
+                    .spec(build(200))
                     .body(matchesJsonSchemaInClasspath(getCartSchema))
                     .body("products", hasSize(0));
         });
@@ -126,7 +127,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .delete("/" + request.getId())
 
                     .then()
-                    .spec(deleteProductResponse404Spec)
+                    .spec(build(404))
                     .body("message", is(messageProductDFindInCart));
         });
 
@@ -136,7 +137,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .get()
 
                     .then()
-                    .spec(getCartResponse200Spec)
+                    .spec(build(200))
                     .body(matchesJsonSchemaInClasspath(getCartSchema))
                     .body("products", hasSize(0));
         });
@@ -162,7 +163,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .delete("/" + request.getId())
 
                     .then()
-                    .spec(deleteProductResponse404Spec)
+                    .spec(build(404))
                     .body("message", is(messageProductDFindInCart));
         });
 
@@ -172,7 +173,7 @@ public class DeleteFromCartTest extends BaseCartTest {
                     .get()
 
                     .then()
-                    .spec(getCartResponse200Spec)
+                    .spec(build(200))
                     .body(matchesJsonSchemaInClasspath(getCartSchema))
                     .body("products", hasSize(0));
         });
